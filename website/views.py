@@ -225,7 +225,7 @@ def order(order_id):
         if order_id is not None:
             cur.execute('Select * from "order" where id = ? and user_id = ?',(order_id,user_id))
             order = cur.fetchone()
-            cur.execute('SELECT * from order_details where order_id = ?',(order_id,))
+            cur.execute('SELECT product_id, product,order_details.price ,quantity from order_details inner join GUITAR on GUITAR.id = order_details.product_id where order_id = ?',(order_id,))
             order_details = cur.fetchall()
             conn.close()
             return render_template('orders.html',order = order,order_details = order_details, user_name = current_username)
