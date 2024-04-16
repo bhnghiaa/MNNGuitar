@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, flash, redirect, url_for
+from flask import Blueprint, jsonify, render_template, request, session, flash, redirect, url_for
 import sqlite3
 views = Blueprint("views", __name__)
 
@@ -239,12 +239,16 @@ def order(order_id):
     flash("User not logged in")
     return redirect(url_for("auth.login"))
 
-@views.route("/sort-form", methods=["POST"])
-def process_sort_form():
-    selected_option = request.form.get('sort-dropdown')
+@views.route('/all-product', methods=['GET'])
+def get_all_products():
+    # Lấy giá trị của phương thức lọc từ yêu cầu
+    filter_by = request.args.get('filter')
     conn = sqlite3.connect(sqldbname)
     cursor = conn.cursor()
-    match selected_option:
+    
+    # Xử lý logic lọc sản phẩm ở đây
+    # Ví dụ: nếu filter_by là 'brand', thực hiện truy vấn SQL để lấy sản phẩm theo brand
+    match filter_by:
         case "Default Sort":
             sqlcommand = ("select * from GUITAR")
         case "Sort By Price":
@@ -257,8 +261,32 @@ def process_sort_form():
             sqlcommand = ("select * from GUITAR ORDER BY brand")
     cursor.execute(sqlcommand)
     data = cursor.fetchall()
-    conn.close()
-    return render_template('all_products.html', all_products=data)
+    # Giả sử products là danh sách sản phẩm sau khi lọc
+    
+    
+    return jsonify(data)
+
+
+# @views.route("/sort-form", methods=["POST"])
+# def process_sort_form():
+#     selected_option = request.form.get('sort-dropdown')
+#     conn = sqlite3.connect(sqldbname)
+#     cursor = conn.cursor()
+#     match selected_option:
+#         case "Default Sort":
+#             sqlcommand = ("select * from GUITAR")
+#         case "Sort By Price":
+#             sqlcommand = ("select * from GUITAR ORDER BY CAST(REPLACE(REPLACE(price, '$', ''), '.', '') AS INT)")
+#         case "Sort By Price DESC":
+#             sqlcommand = ("select * from GUITAR ORDER BY CAST(REPLACE(REPLACE(price, '$', ''), '.', '') AS INT) DESC")
+#         case "Sort By Rating":
+#             sqlcommand = ("select * from GUITAR ORDER BY rating DESC")
+#         case "Sort By Brand":        
+#             sqlcommand = ("select * from GUITAR ORDER BY brand")
+#     cursor.execute(sqlcommand)
+#     data = cursor.fetchall()
+#     conn.close()
+#     return render_template('all_products.html', all_products=data)
 
 @views.route('/search', methods=['POST'])
 def search():
