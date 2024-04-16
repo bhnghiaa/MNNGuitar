@@ -38,10 +38,10 @@ a {
   color: #555;
 }
 nav ul li a:hover {
-  color: #00abff;
+  color: rgb(230, 158, 42);
 }
 nav ul li a.active {
-  color: #00abff;
+  color: rgb(230, 158, 42);
 }
 p {
   color: #555;
@@ -156,7 +156,7 @@ p {
 }
 .title::after {
   content: "";
-  background: #00aedf;
+  background: linear-gradient(to top right, #fce38a, #f38181);
   width: 80px;
   height: 5px;
   border-radius: 5px;
@@ -176,7 +176,7 @@ h4 {
   height: 3rem;
 }
 .rating .fa {
-  color: #00aedf;
+  color: rgb(230, 158, 42);
 }
 .col-4:hover {
   transform: translateY(-5px);
@@ -216,7 +216,7 @@ small {
 }
 .fa.fa-quote-left {
   font-size: 34px;
-  color: #00aedf;
+  color: rgb(230, 158, 42);
 }
 .col-3 p {
   font-size: 12px;
@@ -257,6 +257,7 @@ small {
 }
 /* Footer */
 .footer {
+  margin-top: 50px;
   background: black;
   color: #8a8a8a;
   font-size: 14px;
@@ -285,7 +286,7 @@ small {
 }
 .footer-col-2 img {
   width: 180px;
-  margin-bottom: 20px;
+  margin: 25px;
 }
 .footer-col-3,
 .footer-col-4 {
@@ -321,10 +322,10 @@ ul {
 /* All Products */
 .row-2 {
   justify-content: space-between;
-  margin: 100px auto 50px;
+  margin: 50px auto 50px;
 }
 select {
-  border: 1px solid #00aedf;
+  border: 1px solid rgb(230, 158, 42);
   padding: 5px;
 }
 select:focus {
@@ -335,7 +336,7 @@ select:focus {
 }
 .page-btn span {
   display: inline-block;
-  border: 1px solid #00aedf;
+  border: 1px solid rgb(230, 158, 42);
   margin-left: 10px;
   width: 40px;
   height: 40px;
@@ -344,7 +345,7 @@ select:focus {
   cursor: pointer;
 }
 .page-btn span:hover {
-  background: #00aedf;
+  background: rgb(230, 158, 42);
   color: white;
 }
 
@@ -374,14 +375,14 @@ select:focus {
   padding-left: 10px;
   font-size: 20px;
   margin-left: 10px;
-  border: 1px solid #00aedf;
+  border: 1px solid rgb(230, 158, 42);
   margin-right: 10px;
 }
 input:focus {
   outline: none;
 }
 .single-product .fa {
-  color: #00aedf;
+  color: rgb(230, 158, 42);
   margin-left: 10px;
 }
 .small-img-row {
@@ -406,7 +407,7 @@ table {
   flex-wrap: wrap;
 }
 .cart-page table button {
-  background: #00aedf;
+  background: rgb(230, 158, 42);
   display: inline-block;
   color: white;
   padding: 8px 10px;
@@ -423,7 +424,7 @@ th {
   text-align: left;
   padding: 5px;
   color: #fff;
-  background: #00aedf;
+  background: rgb(230, 158, 42);
   font-weight: normal;
 }
 td {
@@ -435,7 +436,7 @@ td input {
   padding: 5px;
 }
 td a {
-  color: #00aedf;
+  color: rgb(230, 158, 42);
   font-size: 12px;
 }
 td img {
@@ -484,7 +485,7 @@ td img {
   justify-content: flex-end;
 }
 .total-price table {
-  border-top: 3px solid #00aedf;
+  border-top: 3px solid rgb(230, 158, 42);
   width: 100%;
   max-width: 400px;
 }

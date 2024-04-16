@@ -1,6 +1,7 @@
 {%extends "base.html"%} {% block title%}Verve & Co. | Log in{%endblock%} {%
-block content%}{% with messages = get_flashed_messages(category_filter=["success"])%} {% if messages%}
-{%for message in messages%}
+block content%}{% with messages =
+get_flashed_messages(category_filter=["success"])%} {% if messages%} {%for
+message in messages%}
 <div class="alert" style="background-color: #d1e7dd">
   <span class="closebtn" onclick="this.parentElement.style.display='none';"
     >&times;</span
@@ -31,7 +32,10 @@ errors %}
           <div class="form-btn">
             <a
               href="/login"
-              style="border-bottom: 3px solid #00aedf; padding-bottom: 3px"
+              style="
+                border-bottom: 3px solid rgb(230, 158, 42);
+                padding-bottom: 3px;
+              "
               >Login</a
             >
             <a href="/signup">Register</a>
