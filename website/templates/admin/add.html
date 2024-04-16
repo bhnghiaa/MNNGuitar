@@ -1,0 +1,40 @@
+{%extends "admin/base.html"%}{% block title%}Verve & Co. | Cart{%endblock%} {%
+block content%}
+<div class="small-container">
+  <h1>Add new product to the storage</h1>
+  <form action="/admin/add" method="post">
+    <label for="Product">Product</label>
+    <input type="text" name="Product" id="" required />
+    <label for="Brand">Brand</label>
+    <input type="text" name="Brand" id="" required />
+    <label for="Rating">Rating</label>
+    <input type="number" step="0.1" name="Rating" id="" required />
+    <label for="Model">Model</label>
+    <input type="text" name="Model" id="" required />
+    <label for="Picture">Picture</label>
+    <input type="text" name="Picture" id="" required />
+    <label for="Price">Price</label>
+    <input type="text" name="Price" id="" required />
+
+    <label for="Details">Details</label>
+    <textarea
+      name="Details"
+      style="width: 100%; height: 150px; resize: none"
+      cols="30"
+      rows="10"
+    ></textarea>
+    <button
+      type="submit"
+      style="width: 200px; height: 40px; cursor: pointer"
+      class="btn"
+    >
+      Add
+    </button>
+    <a
+      href="/admin/"
+      style="font-size: 1rem; text-decoration: underline; color: #00aedf"
+      >Cancel</a
+    >
+  </form>
+</div>
+{%endblock%}

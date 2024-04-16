@@ -1,0 +1,36 @@
+{%extends "base.html" %} {% block title%}Verve & Co.{%endblock%} {% block
+content%}
+<div class="small-container cart-page" style="min-height: 60vh;">
+  {% with messages = get_flashed_messages()%} {% if messages%} {%for message in
+  messages%}
+  <div class="alert" style="background-color: #d1e7dd">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+      >&times;</span
+    >
+    <strong style="color: #256245">Success! {{message}}</strong>
+  </div>
+  {%endfor%} {%endif %} {%endwith%}
+  <a class="btn" href="/logout">Logout</a>
+  <a class="btn" style="background-color: #256245;" href="/admin">Admin Dashboard</a>
+  <h1>Welcome, {{user_name}}</h1>
+  <div>Your Orders:</div>
+  <table class="cart">
+    <tr>
+      <th>Order ID</th>
+      <th>Order</th>
+    </tr>
+    {%if orders == []%}
+      <tr>You haven’t ordered anything</tr>
+    {%else%} {% for order in orders %}
+    <tr>
+      <td>{{order[0]}}</td>
+      <td>
+        <a style="font-size: 1.2rem" href="/order/{{order[0]}}"
+          >{{order[0]}}-{{order[3]}}</a
+        >
+      </td>
+    </tr>
+    {% endfor %} {%endif%}
+  </table>
+</div>
+{%endblock%}

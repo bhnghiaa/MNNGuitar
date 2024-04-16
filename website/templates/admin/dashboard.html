@@ -1,0 +1,73 @@
+{%extends "admin/base.html"%}{% block title%}Admin dashboard{%endblock%} {%
+block content%}
+<div class="small-container cart-page">
+  <h1>Admin Dashboard</h1>
+  {% with messages = get_flashed_messages()%} {% if messages%} {%for message in
+  messages%}
+  <div class="alert" style="background-color: #d1e7dd">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+      >&times;</span
+    >
+    <strong style="color: rgb(37, 98, 69)">Success! {{message}}</strong>
+  </div>
+  {%endfor%} {%endif %} {%endwith%}
+  <button
+    class="btn"
+    style="background-color: #00aedf; cursor: pointer"
+    onclick="window.location.href='/admin/add'"
+  >
+    Add new product &plus;
+  </button>
+  <table>
+    <tr class="table-header">
+      <th>Product</th>
+      <th>Detail</th>
+      <th>Action</th>
+    </tr>
+    {%for storage in storages%}
+    <tr>
+      <td>
+        <div class="cart-info">
+          <img src="{{storage[5]}}" />
+          <p>{{storage[1]}}</p>
+        </div>
+      </td>
+      <td>
+        <div>
+          <p>Rating: {{storage[3]}}</p>
+          <small>Price: {{storage[6]}}</small>
+          <br />
+          <small>Brand: <strong>{{storage[2]}}</strong></small>
+          <br />
+        </div>
+      </td>
+      <td>
+        <form
+          id="delete-form-{{storage[0]}}"
+          action="/admin/delete/{{storage[0]}}"
+          method="post"
+        >
+          <button
+            type="submit"
+            onclick="confirmDelete('{{storage[0]}}')"
+            style="background-color: red"
+          >
+            Delete
+          </button>
+        </form>
+        <a href="/admin/edit/{{storage[0]}}">Edit</a>
+      </td>
+    </tr>
+    {%endfor%}
+  </table>
+</div>
+<script>
+  function confirmDelete(storageID) {
+    var result = confirm("Are you sure you want to delete this product?");
+    if (result) {
+      var form = document.getElementById("delete-form-" + storageID);
+      form.submit();
+    }
+  }
+</script>
+{%endblock%}

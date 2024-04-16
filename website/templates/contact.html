@@ -1,0 +1,43 @@
+{%extends "base.html"%} {% block title%}Verve & Co. | Contact{%endblock%} {%
+block content%} {% with messages = get_flashed_messages()%} {% if messages%}
+{%for message in messages%}
+<div class="alert" style="background-color: #d1e7dd">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"
+    >&times;</span
+  >
+  <strong style="color: rgb(37, 98, 69)">Success! {{message}}</strong>
+</div>
+{%endfor%} {%endif %} {%endwith%}
+<section class="container">
+  <div class="row">
+    <div class="col-2">
+      <img
+        class="about-img"
+        src="https://images.pexels.com/photos/1306246/pexels-photo-1306246.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt=""
+      />
+    </div>
+    <div class="col-2">
+      <h2>Contact with us</h2>
+      <form action="/contact" method="post">
+        <label for="Name">Name</label>
+        <input type="text" required name="Name" id="" />
+        <label for="Tel">Phone</label>
+        <input type="tel" required name="Tel" id="" />
+        <label for="Email">Email</label>
+        <input type="email" required name="Email" id="" />
+        <label for="message">Your Message</label><br />
+        <textarea name="message" required id="" cols="30" rows="10"></textarea>
+        <button
+          type="submit"
+          style="width: 200px; float: right; height: 40px; cursor: pointer"
+          class="btn"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{%extends "base.html"%} {% block title%}Our products{%endblock%} {%block
+content%}
+<div class="small-container">
+  {% with messages = get_flashed_messages(category_filter=["info"])%} {%if
+  messages%} {%for message in messages%}
+  <div class="alert" style="background-color: #cfe2ff">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+      >&times;</span
+    >
+    <p style="color: #084298">
+      <strong>{{message}}</strong>
+    </p>
+  </div>
+  {%endfor%} {%endif %} {%endwith%}
+  <form class="input-group" method="POST" action="/search">
+    <input
+      class="form-control"
+      name="searchInput"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button class="input-group-text" type="submit">Search</button>
+  </form>
+
+  {% with messages = get_flashed_messages(category_filter=["success"])%} {%if
+  messages%} {%for message in messages%}
+  <div class="alert" style="background-color: #cfe2ff">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+      >&times;</span
+    >
+    <p style="color: #084298">
+      You have search for <strong>{{message}}</strong>
+    </p>
+  </div>
+  {%endfor%} {%endif %} {%endwith%} {% with errors =
+  get_flashed_messages(category_filter=["error"]) %} {% if errors %} {%for msg
+  in errors %}
+  <div class="alert" style="background-color: #f8d7da">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+      >&times;</span
+    >
+    <p style="color: #a12029">Error: <strong>{{msg}}</strong></p>
+  </div>
+  {% endfor %} {% endif %} {% endwith %}
+  <div class="row row-2">
+    <h2>All Products</h2>
+    <form action="/sort-form" method="post">
+      <div class="dropdown-section">
+        <select name="sort-dropdown">
+          <option value="Default Sort">Default Sort</option>
+          <option value="Sort By Price">Sort By Price Asc</option>
+          <option value="Sort By Price DESC">Sort By Price Desc</option>
+          <option value="Sort By Rating">Sort By Rating</option>
+          <option value="Sort By Brand">Sort By Brand</option>
+        </select>
+        <button class="btn" type="submit">
+          <i class="fa fa-sort" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    {% for product in all_products%}
+    <div class="col-4">
+      <a href="/product_detail/{{product[0]}}"
+        ><img
+          style="aspect-ratio: 3/4; object-fit: cover"
+          src="{{ product[5]}}"
+      /></a>
+      <div class="detail">
+        <h4>{{product[1]}}</h4>
+        {%set rate = product[3]|int%}
+
+        <div class="rating">
+          {%for i in range(0, rate) %}
+          <i class="fa fa-star"></i>
+          {%endfor%} {%for i in range(rate, 5) %}
+          <i class="fa fa-star-o"></i>
+          {%endfor%}
+          <span style="margin-left: 2rem">{{product[2]}}</span>
+          <p>{{product[6]}}</p>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  <!-- <div class="page-btn">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>&#8594;</span>
+    </div> -->
+</div>
+
+{%endblock%}

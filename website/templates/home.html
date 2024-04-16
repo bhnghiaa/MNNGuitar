@@ -1,0 +1,218 @@
+{%extends "base.html"%} {% block title%}Verve & Co.{%endblock%} {% block
+content%}
+
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <h1>Strumming the Melodies of Passion and Craftsmanship</h1>
+        <p>
+          Discover Your Unique Sound: Explore an Eclectic Range of Musical
+          Instruments and Accessories to Elevate Your Musical Journey.
+        </p>
+        <a href="/all_products" class="btn">Explore Now &#8594;</a>
+      </div>
+      <div class="col-2 image-wraper">
+        <img src="static/images/hero-image-3.png" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Brands -->
+
+<div class="brands">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-5">
+        <a href="https://www2.hm.com/en_us/index.html" target="_blank"
+          ><img src="static/images/brand1.png"
+        /></a>
+      </div>
+      <div class="col-5">
+        <a href="https://www.lacoste.com/us/" target="_blank"
+          ><img src="static/images/brand2.png"
+        /></a>
+      </div>
+      <div class="col-5">
+        <a href="https://www.levi.com/US/en_US/" target="_blank"
+          ><img src="static/images/brand3.png"
+        /></a>
+      </div>
+      <div class="col-5">
+        <a href="https://www.shopify.com/" target="_blank"></a
+        ><img src="static/images/brand4.png" />
+      </div>
+      <div class="col-5">
+        <a href="https://obeyclothing.com/" target="_blank"
+          ><img src="static/images/brand5.png"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featured Products -->
+
+<div class="small-container">
+  <h2 class="title">Featured Products</h2>
+  <div class="row">
+    {% for product in featuresProduct%}
+    <div class="col-4">
+      <a href="/product_detail/{{product[0]}}"><img src="{{ product[5]}}" /></a>
+      <h4>{{product[1]}}</h4>
+      {%set rate = product[3]|int%}
+      <div class="rating">
+        {%for i in range(0, rate) %}
+        <i class="fa fa-star"></i>
+        {%endfor%} {%for i in range(rate, 5) %}
+        <i class="fa fa-star-o"></i>
+        {%endfor%}
+        <p>{{product[6]}}</p>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  <h2 class="title">Latest Products</h2>
+  <div class="row">
+    {% for product in latestProducts%}
+    <div class="col-4">
+      <a href="/product_detail/{{product[0]}}"><img src="{{ product[5]}}" /></a>
+      <div class="detail">
+        <h4>{{product[1]}}</h4>
+        {%set rate = product[3]|int%}
+        <div class="rating">
+          {%for i in range(0, rate) %}
+          <i class="fa fa-star"></i>
+          {%endfor%} {%for i in range(rate, 5) %}
+          <i class="fa fa-star-o"></i>
+          {%endfor%}
+          <p>{{product[6]}}</p>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+
+<!-- Offer -->
+<div class="offer">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-2">
+        <img
+          src="https://nhaccutiendat.vn/upload/img/Dan-guitar-Acoustic-TAYLOR-214CE.jpg?width=1000&height=1000&quality=100"
+          class="offer-img"
+        />
+      </div>
+      <div class="col-2">
+        <p>Exclusively Available on MNN</p>
+        <h1>Luxury Limited Fibenare Guitars</h1>
+        <small
+          >Relaxed-fit sweatshirt hoodie in cotton fabric with a printed motif
+          at front and back and soft, brushed inside.<br
+        /></small>
+        <a href="/product_detail/11" class="btn">Buy Now &#8594;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="testimonial">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p>
+          is your one-stop shop for designer pieces at an affordable price. With
+          an ever-changing selection of clothes for men, women, and children,
+          you’ll find something for any occasion.
+        </p>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D"
+        />
+        <h3>NguyenLeMinHo.</h3>
+      </div>
+      <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p>
+          it is a budget-friendly clothing store that has colorful and trendy
+          pieces for men and women. Their selection of graphic tees, sweatpants
+          and joggers, and sneakers
+        </p>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXZhdGFyfGVufDB8fDB8fHww"
+        />
+        <h3>MIKE A.</h3>
+      </div>
+      <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p>
+          is a luxurious department store that carries designer clothes and
+          accessories. They have an extensive collection of high-end fashion
+          from top names like Prada, Gucci, and Chanel.
+        </p>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww"
+        />
+        <h3>KAREN P.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feadtued Categories -->
+
+<div class="guarantee">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-3">
+        <div class="grey-circle">
+          <img src="static/images/icon-delivery.png" />
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column">
+          <h3 className=" text-xl font-bold mb-2">FREE AND FAST DELIVERY</h3>
+          <p>Free delivery for all orders over $140</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="grey-circle">
+          <img src="static/images/Icon-Customer.png" />
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column">
+          <h3 className=" text-xl font-bold mb-2">24/7 CUSTOMER SERVICE</h3>
+          <p>Friendly 24/7 customer support</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="grey-circle">
+          <img src="static/images/icon-secure.png" />
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column">
+          <h3 className=" text-xl font-bold mb-2">MONEY BACK GUARANTEE</h3>
+          <p>We return money within 30 days</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

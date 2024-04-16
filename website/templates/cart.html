@@ -1,0 +1,78 @@
+{%extends "base.html"%}{% block title%}Verve & Co. | Cart{%endblock%} {% block
+content%}
+<form
+  action="{{url_for('views.CartUpdate')}}"
+  method="post"
+  style="min-height: 60vh"
+>
+  <div class="small-container cart-page">
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+      {%set total = namespace(value=0)%} {% for row in cart %}
+      <tr>
+        <td>
+          <div class="cart-info">
+            <img src="{{row['image']}}" />
+            <div>
+              <p>{{row['name']}}</p>
+              <small>Price: {{row['price']}}</small>
+              <br />
+              <button type="submit" name="delete-{{row['id']}}">Remove</button>
+            </div>
+          </div>
+        </td>
+        <td>
+          <input
+            type="number"
+            min="0"
+            value="{{row['quantity']}}"
+            style="margin-right: 5px; width: 50px"
+            name="quantity-{{row['id']}}"
+          />
+          <button type="submit" value="quantity-{{row['id']}}">Update</button>
+        </td>
+        <td>
+          {{convert_int_to_currency(convert_currency_to_int(row['price']) *
+          row['quantity'])}}
+        </td>
+      </tr>
+      {%set total.value = total.value + (convert_currency_to_int(row['price']) *
+      row['quantity'])%} {%endfor%}
+    </table>
+    <div class="total-price" style="margin-top: 2rem">
+      <table>
+        <tr>
+          <td>Subtotal</td>
+          <td>{{convert_int_to_currency(total.value)}}</td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>{{convert_int_to_currency(total.value)}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>
+<div
+  class="small-container cart-page"
+  style="display: flex; justify-content: flex-end"
+>
+  <form action="{{ url_for('views.proceed_cart') }}" method="post">
+    <button
+      type="submit"
+      style="width: 200px; height: 40px; cursor: pointer"
+      class="btn"
+    >
+      Proceed Cart
+    </button>
+  </form>
+</div>
+{%endblock%}
