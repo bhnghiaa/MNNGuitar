@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, session, request, redirect, url_fo
 import sqlite3
 auth = Blueprint("auth", __name__)
 
-sqldbname = 'LAPTRINHWEB.db'
+sqldbname = 'GUITAR.db'
 
 def SaveToDB(name,email,password):
     conn = sqlite3.connect(sqldbname)
@@ -11,7 +11,7 @@ def SaveToDB(name,email,password):
     cur.execute(sqlcommand)
     id_max = cur.fetchone()[0]
     id_max = id_max + 1
-    cur.execute("INSERT INTO user (user_id, name, email, password) VALUES (?,?,?,?)",(id_max,name,email,password))
+    cur.execute("INSERT INTO user (user_id, name, email, password, admin) VALUES (?,?,?,?,?)",(id_max,name,email,password,0))
     conn.commit()
     conn.close()
     return id_max
@@ -20,7 +20,7 @@ def get_obj_user(username,password):
     result =[]
     conn = sqlite3.connect(sqldbname)
     cur = conn.cursor()
-    sqlcommand = "Select * from user where email =? and password = ?"
+    sqlcommand = "Select * from user where name =? and password = ?"
     cur.execute(sqlcommand,(username,password))
     obj_user = cur.fetchone()
     if obj_user:
@@ -39,11 +39,17 @@ def login():
             obj_user ={
                 "id" : obj_user[0],
                 "name": obj_user[1],
-                "email":obj_user[2]
+                "email":obj_user[2],
+                "admin": obj_user[4]
             }
+        if obj_user["admin"] == 0:
             session['current_user'] = obj_user
             flash("You have log in successfully", "success")
             return redirect(url_for('views.account'))
+        elif obj_user["admin"] == 1:
+           session['current_user'] = obj_user
+           flash("You have log in successfully as admin of page", "success")
+           return redirect(url_for('admin.index'))
         flash("Please check your username and password", 'error')
         return redirect(url_for('auth.login'))
     return render_template('login.html')

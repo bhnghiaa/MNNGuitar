@@ -580,6 +580,7 @@ form a {
   color: black;
 }
 
+
 /* Media query for menu */
 @media only screen and (max-width: 800px) {
   nav ul {

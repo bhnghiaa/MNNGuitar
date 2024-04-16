@@ -2,13 +2,13 @@ from flask import Blueprint, render_template, request, session, flash, redirect,
 import sqlite3
 admin = Blueprint("admin", __name__)
 
-sqldbname = 'LAPTRINHWEB.db'
+sqldbname = 'GUITAR.db'
 
 @admin.route('/')
 def index():
   conn = sqlite3.connect(sqldbname)
   cursor = conn.cursor()
-  sqlcommand = ("SELECT * FROM FASHION")
+  sqlcommand = ("SELECT * FROM GUITAR")
   cursor.execute(sqlcommand)
   storages = cursor.fetchall()
   conn.close()
@@ -27,7 +27,7 @@ def add():
     
     conn = sqlite3.connect(sqldbname)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO FASHION (product, brand, rating, model, picture, price, details) VALUES(?,?,?,?,?,?,?)", (product, brand, rating, model, picture, price, details))
+    cursor.execute("INSERT INTO GUITAR (product, brand, rating, model, picture, price, details) VALUES(?,?,?,?,?,?,?)", (product, brand, rating, model, picture, price, details))
     conn.commit()
     conn.close()
     flash("You have added successfully", "success")
@@ -38,7 +38,7 @@ def add():
 def edit_product(id):
   conn = sqlite3.connect(sqldbname)
   cursor = conn.cursor()
-  cursor.execute("SELECT * FROM FASHION where id = ?", (id,))
+  cursor.execute("SELECT * FROM GUITAR where id = ?", (id,))
   storage = cursor.fetchone()
   conn.close()
   if request.method == 'POST':
@@ -51,7 +51,7 @@ def edit_product(id):
     details = request.form['Details']
     conn = sqlite3.connect(sqldbname)
     cursor = conn.cursor()
-    cursor.execute("Update FASHION set product = ?, brand = ?, rating = ?, model = ?, picture = ?, price = ?, details = ? where id = ?", (product, brand, rating, model, picture, price, details, id))
+    cursor.execute("Update GUITAR set product = ?, brand = ?, rating = ?, model = ?, picture = ?, price = ?, details = ? where id = ?", (product, brand, rating, model, picture, price, details, id))
     conn.commit()
     conn.close()
     flash("Product updated successfully!", "success")
@@ -64,7 +64,7 @@ def edit_product(id):
 def delete(id):
   conn = sqlite3.connect(sqldbname)
   cursor = conn.cursor()
-  cursor.execute("DELETE FROM FASHION WHERE id = ?", (id,))
+  cursor.execute("DELETE FROM GUITAR WHERE id = ?", (id,))
   conn.commit()
   conn.close()
   flash("You have successfully deleted the item", "success")
