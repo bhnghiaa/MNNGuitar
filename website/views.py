@@ -1,6 +1,15 @@
 from flask import Blueprint, jsonify, render_template, request, session, flash, redirect, url_for
 import sqlite3
 views = Blueprint("views", __name__)
+import random
+
+def generate_random_numbers():
+    # Sinh ra 4 số ngẫu nhiên trong khoảng từ 1 đến 12
+    random_numbers = [random.randint(1, 12) for _ in range(4)]
+    return random_numbers
+
+# Sử dụng hàm để sinh ra 4 số ngẫu nhiên
+
 
 
 sqldbname = 'GUITAR.db'
@@ -80,8 +89,9 @@ def product_detail(id):
     sqlcommand = 'SELECT * FROM GUITAR WHERE id = ?'
     cursor.execute(sqlcommand, (id,))
     product_detail = cursor.fetchone()
-    sqlcommand = 'SELECT * FROM GUITAR LIMIT 0, 4'
-    cursor.execute(sqlcommand)
+    random_numbers = generate_random_numbers()
+    sqlcommand = 'SELECT * FROM GUITAR where id in (?,?,?,?)'
+    cursor.execute(sqlcommand,(random_numbers[0],random_numbers[1],random_numbers[2],random_numbers[3]))
     related_products = cursor.fetchall()
     return render_template('product_detail.html', product_detail=product_detail, related_products=related_products, user_name = current_username)
 

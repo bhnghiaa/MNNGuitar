@@ -1,7 +1,6 @@
-{%extends "base.html"%} {% block title%}Verve & Co. | Log in{%endblock%} {%
-block content%}{% with messages =
-get_flashed_messages(category_filter=["success"])%} {% if messages%} {%for
-message in messages%}
+{%extends "base.html"%} {% block title%}MNN | Log in{%endblock%} {% block
+content%}{% with messages = get_flashed_messages(category_filter=["success"])%}
+{% if messages%} {%for message in messages%}
 <div class="alert" style="background-color: #d1e7dd">
   <span class="closebtn" onclick="this.parentElement.style.display='none';"
     >&times;</span

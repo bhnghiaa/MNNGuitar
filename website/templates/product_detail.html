@@ -1,4 +1,4 @@
-{%extends "base.html" %} {% block title%}Verve & Co.{%endblock%} {% block
+{%extends "base.html" %} {% block title%}MNN{%endblock%} {% block
 content%}
 <div class="small-container single-product">
   {% with messages = get_flashed_messages()%} {% if messages%} {%for message in
@@ -16,7 +16,7 @@ content%}
       <img src="{{product_detail[5]}}" width="100%" id="ProductImg" />
     </div>
     <div class="col-2">
-      <p>Home / T-Shirt</p>
+      <p>Home / Guitar</p>
       <h1>{{product_detail[1]}}</h1>
       <h4>{{product_detail[6]}}</h4>
       <h4>Brand: {{product_detail[2]}}</h4>

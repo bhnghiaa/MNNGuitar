@@ -57,6 +57,8 @@ p {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-around;
+  row-gap: 10px;
+  /* column-gap: 1px; */
 }
 .header .row {
   padding-top: 70px;
@@ -138,14 +140,17 @@ p {
   padding-right: 25px;
 }
 .col-4 {
-  flex-basis: 25%;
+  flex-basis: 23%;
   padding: 10px;
   min-width: 200px;
-  margin-bottom: 50px;
+  height: 100%;
+  padding-bottom: 60px;
   transition: transform 0.5s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 5px;
 }
 .col-4 img {
-  width: 100%;
+  width: 80%;
 }
 .title {
   text-align: center;
@@ -579,7 +584,6 @@ form a {
 .closebtn:hover {
   color: black;
 }
-
 
 /* Media query for menu */
 @media only screen and (max-width: 800px) {
