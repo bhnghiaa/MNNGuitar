@@ -36,20 +36,20 @@ def login():
         password = request.form['txt_password']
         obj_user = get_obj_user(username,password)
         if obj_user:
-            obj_user ={
+          obj_user ={
                 "id" : obj_user[0],
                 "name": obj_user[1],
                 "email":obj_user[2],
                 "admin": obj_user[4]
-            }
-        if obj_user["admin"] == 0:
+          }
+          if obj_user["admin"] == 0:
             session['current_user'] = obj_user
             flash("You have log in successfully", "success")
             return redirect(url_for('views.account'))
-        elif obj_user["admin"] == 1:
+          elif obj_user["admin"] == 1:
            session['current_user'] = obj_user
            flash("You have log in successfully as admin of page", "success")
-           return redirect(url_for('admin.index'))
+           return redirect(url_for('admin.index'))        
         flash("Please check your username and password", 'error')
         return redirect(url_for('auth.login'))
     return render_template('login.html')
