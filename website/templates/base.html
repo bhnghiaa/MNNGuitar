@@ -9,16 +9,20 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
+      referrerpolicy="no-referrer"
+    />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}" />
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body>
@@ -59,7 +63,8 @@
         <img
           src="{{ url_for('static', filename='/images/menu.png') }}"
           class="menu-icon"
-          onclick="menutoggle()" />
+          onclick="menutoggle()"
+        />
       </div>
     </div>
     {% block content%} {% endblock %}
@@ -73,9 +78,11 @@
             <p>Download App for Android and ios mobile phone.</p>
             <div class="app-logo">
               <img
-                src=" {{url_for('static', filename='images/google-play-badge.png')}}" />
+                src=" {{url_for('static', filename='images/google-play-badge.png')}}"
+              />
               <img
-                src=" {{url_for('static', filename='/images/app-store-badge.png')}}" />
+                src=" {{url_for('static', filename='/images/app-store-badge.png')}}"
+              />
             </div>
           </div>
           <div class="footer-col-2">
@@ -83,10 +90,11 @@
               src="{{url_for('static', filename='images/shop-logo-2.png')}}"
               alt="logo"
               width="200px"
-              style="border-radius: 8px" />
+              style="border-radius: 8px"
+            />
             <p>
               Our Purpose Is To Sustainably Make the Pleasure and Benefits of
-              Sports Accessible to the Many.
+              Music Accessible to the Many.
             </p>
           </div>
           <div class="footer-col-3">
@@ -109,7 +117,7 @@
           </div>
         </div>
         <hr />
-        <p class="copyright">Copyright 2023 - Verve & Co.</p>
+        <p class="copyright">Copyright 2024 - MNN Guitar.</p>
       </div>
     </div>
 
