@@ -12,15 +12,62 @@ content%}
     </p>
   </div>
   {%endfor%} {%endif %} {%endwith%}
-  <form class="input-group" method="POST" action="/search">
+  <form
+    class="input-group"
+    method="POST"
+    action="/search"
+    style="
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      background-color: white;
+      border: 2px solid #00b4d8; /* Teal border color */
+      border-radius: 25px; /* Rounded corners */
+      padding: 5px 20px;
+      max-width: 500px; /* Adjust to fit your layout */
+      margin: 20px auto;
+    ">
     <input
       class="form-control"
       name="searchInput"
       type="search"
       placeholder="Search"
       aria-label="Search"
-    />
-    <button class="input-group-text" type="submit">Search</button>
+      style="
+        flex-grow: 1;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 16px;
+      " />
+    <button
+      class="input-group-text"
+      type="submit"
+      style="
+        background: transparent;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      ">
+      <style>
+        .input-group-text::after {
+          content: "🔍"; /* You might want to use an actual icon like FontAwesome instead */
+          font-size: 20px;
+          color: #00b4d8; /* Teal color */
+        }
+
+        /* Adjust the input placeholder color */
+        .form-control::placeholder {
+          color: #00b4d8; /* Teal color */
+        }
+
+        /* Optional: Add some hover effects for the button */
+        .input-group-text:hover {
+          opacity: 0.8;
+        }
+      </style>
+      Search
+    </button>
   </form>
 
   {% with messages = get_flashed_messages(category_filter=["success"])%} {%if

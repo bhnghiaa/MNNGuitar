@@ -401,7 +401,7 @@ input:focus {
 
 /* Cart Items */
 .cart-page {
-  margin: 80px auto;
+  margin: 80px 25% 0 25%;
 }
 table {
   width: 100%;
@@ -423,7 +423,7 @@ table {
   transition: background 0.2s;
 }
 .cart-page table button:hover {
-  background: #0079a8;
+  background: linear-gradient(to top right, #fce38a, #f38181);
 }
 th {
   text-align: left;
